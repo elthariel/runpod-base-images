@@ -1,5 +1,6 @@
 # Stage 1: Base
-FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as base
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE} as base
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -106,10 +107,6 @@ RUN rm -f /etc/ssh/ssh_host_*
 
 # NGINX Proxy
 COPY nginx/502.html /usr/share/nginx/html/502.html
-
-# Set template version
-ARG RELEASE
-ENV TEMPLATE_VERSION=${RELEASE}
 
 # Copy the scripts
 WORKDIR /

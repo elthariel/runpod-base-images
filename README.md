@@ -23,7 +23,7 @@
 
 ```bash
 # Clone the repo
-git clone https://github.com/ashleykleynhans/docker-base-images.git
+git clone https://github.com/ashleykleynhans/runpod-base-images.git
 
 # Log in to Docker Hub
 docker login
@@ -34,7 +34,7 @@ docker buildx bake -f docker-bake.hcl --push
 
 ## Community and Contributing
 
-Pull requests and issues on [GitHub](https://github.com/ashleykleynhans/docker-base-images)
+Pull requests and issues on [GitHub](https://github.com/ashleykleynhans/runpod-base-images)
 are welcome. Bug fixes and new features are encouraged.
 
 ## Appreciate my work?
