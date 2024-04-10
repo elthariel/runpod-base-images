@@ -62,7 +62,7 @@ RUN apt update && \
 # Set Python
 RUN ln -s /usr/bin/python3.10 /usr/bin/python
 
-# Install Torch, xformers and tensorrt
+# Install Torch and xformers
 ARG INDEX_URL
 ARG TORCH_VERSION
 ARG XFORMERS_VERSION
