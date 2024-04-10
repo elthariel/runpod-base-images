@@ -1,4 +1,4 @@
-# Docker image for RunPod base images
+# Docker base images for RunPod templates
 
 ## Installs
 
