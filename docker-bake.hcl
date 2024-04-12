@@ -3,7 +3,7 @@ variable "USERNAME" {
 }
 
 variable "RELEASE" {
-    default = "1.0.0"
+    default = "1.0.1"
 }
 
 variable "RUNPODCTL_VERSION" {
