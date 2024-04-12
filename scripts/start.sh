@@ -153,6 +153,11 @@ EOF
     fi
 }
 
+update_rclone() {
+    echo "Updating rclone..."
+    rclone selfupdate
+}
+
 # ---------------------------------------------------------------------------- #
 #                               Main Program                                   #
 # ---------------------------------------------------------------------------- #
@@ -164,6 +169,7 @@ start_jupyter
 start_runpod_uploader
 execute_script "/pre_start.sh" "Running pre-start script..."
 configure_filezilla
+update_rclone
 export_env_vars
 execute_script "/post_start.sh" "Running post-start script..."
 echo "Container is READY!"
