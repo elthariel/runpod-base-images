@@ -7,7 +7,7 @@ variable "REGISTRY_USER" {
 }
 
 variable "RELEASE" {
-    default = "1.0.1"
+    default = "1.0.2"
 }
 
 variable "RUNPODCTL_VERSION" {
