@@ -1,18 +1,20 @@
 # Docker base images for RunPod templates
 
-## Installs
+## Target Images
 
-* Ubuntu 22.04 LTS
-* CUDA 11.8
-* Python 3.10.12
-* Torch 2.1.2
-* xformers 0.0.23.post1
-* Jupyter Lab
-* [runpodctl](https://github.com/runpod/runpodctl)
-* [OhMyRunPod](https://github.com/kodxana/OhMyRunPod)
-* [RunPod File Uploader](https://github.com/kodxana/RunPod-FilleUploader)
-* [croc](https://github.com/schollz/croc)
-* [rclone](https://rclone.org/)
+|                                                                             | cu118-torch212 | cu118-torch222 | cu121-torch221 |
+|-----------------------------------------------------------------------------|----------------|----------------|----------------|
+| **Ubuntu**                                                                  | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      |
+| **CUDA**                                                                    | 11.8           | 11.8           | 12.1           |
+| **Python**                                                                  | 3.10.12        | 3.10.12        | 3.10.12        |
+| **Torch**                                                                   | 2.1.2          | 2.2.2          | 2.2.1          |
+| xformers                                                                    | 0.0.23.post1   | 0.0.25.post1   | None           |
+| Jupyter Lab                                                                 |                |                |                |
+| [**runpodctl**](https://github.com/runpod/runpodctl)                        |                |                |                |
+| [**OhMyRunPod**](https://github.com/kodxana/OhMyRunPod)                     |                |                |                |
+| [**RunPod File Uploader**](https://github.com/kodxana/RunPod-FilleUploader) |                |                |                |
+| [**croc**](https://github.com/schollz/croc)                                 |                |                |                |
+| [**rclone**](https://rclone.org/)                                           |                |                |                |
 
 ## Building the Docker image
 
