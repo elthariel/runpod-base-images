@@ -17,7 +17,7 @@
 ## Building the Docker image
 
 > [!NOTE]
-> You will need to edit the `docker-bake.hcl` file and update `USERNAME`,
+> You will need to edit the `docker-bake.hcl` file and update `REGISTRY_USER`,
 > and `RELEASE`.  You can obviously edit the other values too, but these
 > are the most important ones.
 
@@ -30,6 +30,10 @@ docker login
 
 # Build the image, tag the image, and push the image to Docker Hub
 docker buildx bake -f docker-bake.hcl --push
+
+# Build a specific target for a different user, registry and release version
+REGISTRY=ghcr.io REGISTRY_USER=my_gh_user RELEASE=x.y.z docker buildx bake \
+    -f docker-bake.hcl --push cu118-torch212
 ```
 
 ## Community and Contributing
