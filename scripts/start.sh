@@ -158,6 +158,11 @@ update_rclone() {
     rclone selfupdate
 }
 
+start_cron() {
+    echo "Starting Cron service..."
+    service cron start
+}
+
 # ---------------------------------------------------------------------------- #
 #                               Main Program                                   #
 # ---------------------------------------------------------------------------- #
@@ -165,6 +170,7 @@ update_rclone() {
 echo "Container Started, configuration in progress..."
 start_nginx
 setup_ssh
+start_cron
 start_jupyter
 start_runpod_uploader
 execute_script "/pre_start.sh" "Running pre-start script..."

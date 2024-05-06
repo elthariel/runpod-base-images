@@ -48,6 +48,7 @@ RUN apt update && \
         tmux \
         bc \
         aria2 \
+        cron \
         pkg-config \
         plocate \
         libcairo2-dev \
