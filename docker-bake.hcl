@@ -15,7 +15,12 @@ variable "RUNPODCTL_VERSION" {
 }
 
 group "default" {
-    targets = ["cu118-torch212", "cu118-torch222", "cu121-torch221"]
+    targets = [
+        "cu118-torch212",
+        "cu118-torch222",
+        "cu118-torch230",
+        "cu121-torch221"
+    ]
 }
 
 target "cu118-torch212" {
@@ -40,6 +45,19 @@ target "cu118-torch222" {
         INDEX_URL = "https://download.pytorch.org/whl/cu118"
         TORCH_VERSION = "2.2.2+cu118"
         XFORMERS_VERSION = "0.0.25.post1+cu118"
+        RUNPODCTL_VERSION = "${RUNPODCTL_VERSION}"
+    }
+}
+
+target "cu118-torch230" {
+    dockerfile = "Dockerfile.with-xformers"
+    tags = ["${REGISTRY}/${REGISTRY_USER}/runpod-base:${RELEASE}-cuda11.8.0-torch2.3.0"]
+    args = {
+        BASE_IMAGE = "nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04"
+        RELEASE = "${RELEASE}"
+        INDEX_URL = "https://download.pytorch.org/whl/cu118"
+        TORCH_VERSION = "2.3.0+cu118"
+        XFORMERS_VERSION = "0.0.26.post1+cu118"
         RUNPODCTL_VERSION = "${RUNPODCTL_VERSION}"
     }
 }
