@@ -25,7 +25,7 @@ group "default" {
 }
 
 target "cu118-torch200" {
-    dockerfile = "../dockerfiles/with-xformers-std/Dockerfile"
+    dockerfile = "./dockerfiles/with-xformers-std/Dockerfile"
     tags = ["${REGISTRY}/${REGISTRY_USER}/runpod-base:${RELEASE}-cuda11.8.0-torch2.0.0"]
     args = {
         BASE_IMAGE = "nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04"
@@ -40,7 +40,7 @@ target "cu118-torch200" {
 }
 
 target "cu118-torch212" {
-    dockerfile = "../dockerfiles/with-xformers-cuxxx/Dockerfile"
+    dockerfile = "./dockerfiles/with-xformers-cuxxx/Dockerfile"
     tags = ["${REGISTRY}/${REGISTRY_USER}/runpod-base:${RELEASE}-cuda11.8.0-torch2.1.2"]
     args = {
         BASE_IMAGE = "nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04"
@@ -55,7 +55,7 @@ target "cu118-torch212" {
 }
 
 target "cu118-torch222" {
-    dockerfile = "../dockerfiles/with-xformers-cuxxx/Dockerfile"
+    dockerfile = "./dockerfiles/with-xformers-cuxxx/Dockerfile"
     tags = ["${REGISTRY}/${REGISTRY_USER}/runpod-base:${RELEASE}-cuda11.8.0-torch2.2.2"]
     args = {
         BASE_IMAGE = "nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04"
@@ -70,7 +70,7 @@ target "cu118-torch222" {
 }
 
 target "cu118-torch230" {
-    dockerfile = "../dockerfiles/with-xformers-cuxxx/Dockerfile"
+    dockerfile = "./dockerfiles/with-xformers-cuxxx/Dockerfile"
     tags = ["${REGISTRY}/${REGISTRY_USER}/runpod-base:${RELEASE}-cuda11.8.0-torch2.3.0"]
     args = {
         BASE_IMAGE = "nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04"
@@ -85,7 +85,7 @@ target "cu118-torch230" {
 }
 
 target "cu121-torch221" {
-    dockerfile = "../dockerfiles/without-xformers-cuxxx/Dockerfile"
+    dockerfile = "./dockerfiles/without-xformers-cuxxx/Dockerfile"
     tags = ["${REGISTRY}/${REGISTRY_USER}/runpod-base:${RELEASE}-cuda12.1.1-torch2.2.1"]
     args = {
         BASE_IMAGE = "nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04"
