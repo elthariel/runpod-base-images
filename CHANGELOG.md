@@ -2,6 +2,7 @@
 
 ## 2024-05-08
 
+- Moved installation of apt packages into build/packages.sh.
 - Added `cu118-torch200` target for CUDA 11.8 + torch 2.0.0.
 
 ## 2024-05-06
