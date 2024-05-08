@@ -15,6 +15,9 @@ curl -sSL https://github.com/kodxana/RunPod-FilleUploader/raw/main/scripts/insta
 # Install rclone
 curl https://rclone.org/install.sh | bash
 
+# Update rclone
+rclone selfupdate
+
 # Install runpodctl
 wget "https://github.com/runpod/runpodctl/releases/download/${RUNPODCTL_VERSION}/runpodctl-linux-amd64" -O runpodctl && \
     chmod a+x runpodctl && \
