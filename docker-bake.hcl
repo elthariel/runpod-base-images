@@ -32,7 +32,7 @@ target "cu118-torch200" {
         RELEASE = "${RELEASE}"
         INDEX_URL = "https://download.pytorch.org/whl/cu118"
         TORCH_VERSION = "2.0.0+cu118"
-        XFORMERS_VERSION = "0.0.19+cu118"
+        XFORMERS_VERSION = "0.0.19"
         RUNPODCTL_VERSION = "${RUNPODCTL_VERSION}"
     }
     platforms = ["linux/amd64"]
