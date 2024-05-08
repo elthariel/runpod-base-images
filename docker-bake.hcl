@@ -16,11 +16,27 @@ variable "RUNPODCTL_VERSION" {
 
 group "default" {
     targets = [
+        "cu118-torch200",
         "cu118-torch212",
         "cu118-torch222",
         "cu118-torch230",
         "cu121-torch221"
     ]
+}
+
+target "cu118-torch200" {
+    dockerfile = "Dockerfile.with-xformers"
+    tags = ["${REGISTRY}/${REGISTRY_USER}/runpod-base:${RELEASE}-cuda11.8.0-torch2.0.0"]
+    args = {
+        BASE_IMAGE = "nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04"
+        RELEASE = "${RELEASE}"
+        INDEX_URL = "https://download.pytorch.org/whl/cu118"
+        TORCH_VERSION = "2.0.0+cu118"
+        XFORMERS_VERSION = "0.0.19+cu118"
+        RUNPODCTL_VERSION = "${RUNPODCTL_VERSION}"
+    }
+    platforms = ["linux/amd64"]
+    annotations = ["org.opencontainers.image.authors=${REGISTRY_USER}"]
 }
 
 target "cu118-torch212" {
@@ -34,6 +50,8 @@ target "cu118-torch212" {
         XFORMERS_VERSION = "0.0.23.post1+cu118"
         RUNPODCTL_VERSION = "${RUNPODCTL_VERSION}"
     }
+    platforms = ["linux/amd64"]
+    annotations = ["org.opencontainers.image.authors=${REGISTRY_USER}"]
 }
 
 target "cu118-torch222" {
@@ -47,6 +65,8 @@ target "cu118-torch222" {
         XFORMERS_VERSION = "0.0.25.post1+cu118"
         RUNPODCTL_VERSION = "${RUNPODCTL_VERSION}"
     }
+    platforms = ["linux/amd64"]
+    annotations = ["org.opencontainers.image.authors=${REGISTRY_USER}"]
 }
 
 target "cu118-torch230" {
@@ -60,6 +80,8 @@ target "cu118-torch230" {
         XFORMERS_VERSION = "0.0.26.post1+cu118"
         RUNPODCTL_VERSION = "${RUNPODCTL_VERSION}"
     }
+    platforms = ["linux/amd64"]
+    annotations = ["org.opencontainers.image.authors=${REGISTRY_USER}"]
 }
 
 target "cu121-torch221" {
@@ -72,4 +94,6 @@ target "cu121-torch221" {
         TORCH_VERSION = "2.2.1+cu121"
         RUNPODCTL_VERSION = "${RUNPODCTL_VERSION}"
     }
+    platforms = ["linux/amd64"]
+    annotations = ["org.opencontainers.image.authors=${REGISTRY_USER}"]
 }

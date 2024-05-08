@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## 2024-05-08
+
+- Added `cu118-torch200` target for CUDA 11.8 + torch 2.0.0.
+
 ## 2024-05-06
 
 - Added `cu118-torch230` target for CUDA 11.8 + torch 2.3.0.
