@@ -24,34 +24,11 @@ RUN pip3 install --no-cache-dir torch==${TORCH_VERSION} torchvision torchaudio -
 # Stage 2: Install applications
 FROM base as setup
 
-# Install Jupyter, gdown and OhMyRunPod
-RUN pip3 install -U --no-cache-dir jupyterlab \
-        jupyterlab_widgets \
-        ipykernel \
-        ipywidgets \
-        gdown \
-        OhMyRunPod
-
-# Install RunPod File Uploader
-RUN curl -sSL https://github.com/kodxana/RunPod-FilleUploader/raw/main/scripts/installer.sh -o installer.sh && \
-    chmod +x installer.sh && \
-    ./installer.sh
-
-# Install rclone
-RUN curl https://rclone.org/install.sh | bash
-
-# Install runpodctl
+# Install apps
 ARG RUNPODCTL_VERSION
-RUN wget "https://github.com/runpod/runpodctl/releases/download/${RUNPODCTL_VERSION}/runpodctl-linux-amd64" -O runpodctl && \
-    chmod a+x runpodctl && \
-    mv runpodctl /usr/local/bin
-
-# Install croc
-RUN curl https://getcroc.schollz.com | bash
-
-# Install speedtest CLI
-RUN curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | bash && \
-    apt install speedtest
+ENV RUNPODCTL_VERSION=${RUNPODCTL_VERSION}
+COPY --chmod=755 ../../build/apps.sh /apps.sh
+RUN /apps.sh && rm /apps.sh
 
 # Remove existing SSH host keys
 RUN rm -f /etc/ssh/ssh_host_*
