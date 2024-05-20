@@ -2,19 +2,22 @@
 
 ## Target Images
 
-|                                                                             | cu118-torch200 | cu118-torch212 | cu118-torch222 | cu118-torch230 | cu121-torch221 | cu121-torch230 |
-|-----------------------------------------------------------------------------|----------------|----------------|----------------|----------------|----------------|----------------|
-| **Ubuntu**                                                                  | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      |
-| **CUDA**                                                                    | 11.8           | 11.8           | 11.8           | 11.8           | 12.1           | 12.1           |
-| **Python**                                                                  | 3.10.12        | 3.10.12        | 3.10.12        | 3.10.12        | 3.10.12        | 3.10.12        |
-| **Torch**                                                                   | 2.0.0          | 2.1.2          | 2.2.2          | 2.3.0          | 2.2.1          | 2.3.0          |
-| xformers                                                                    | 0.0.19         | 0.0.23.post1   | 0.0.25.post1   | 0.0.26.post1   | None           | 0.0.26.post1   |
-| Jupyter Lab                                                                 |                |                |                |                |                |                |
-| [**runpodctl**](https://github.com/runpod/runpodctl)                        |                |                |                |                |                |                |
-| [**OhMyRunPod**](https://github.com/kodxana/OhMyRunPod)                     |                |                |                |                |                |                |
-| [**RunPod File Uploader**](https://github.com/kodxana/RunPod-FilleUploader) |                |                |                |                |                |                |
-| [**croc**](https://github.com/schollz/croc)                                 |                |                |                |                |                |                |
-| [**rclone**](https://rclone.org/)                                           |                |                |                |                |                |                |
+|              | cu118-torch200 | cu118-torch212 | cu118-torch222 | cu118-torch230 | cu121-torch221 | cu121-torch230 |
+|--------------|----------------|----------------|----------------|----------------|----------------|----------------|
+| **Ubuntu**   | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      |
+| **CUDA**     | 11.8           | 11.8           | 11.8           | 11.8           | 12.1           | 12.1           |
+| **Python**   | 3.10.12        | 3.10.12        | 3.10.12        | 3.10.12        | 3.10.12        | 3.10.12        |
+| **Torch**    | 2.0.0          | 2.1.2          | 2.2.2          | 2.3.0          | 2.2.1          | 2.3.0          |
+| **xformers** | 0.0.19         | 0.0.23.post1   | 0.0.25.post1   | 0.0.26.post1   | None           | 0.0.26.post1   |
+
+## Pre-installed applications
+
+* [Jupyter Lab](https://github.com/jupyterlab/jupyterlab)
+* [runpodctl](https://github.com/runpod/runpodctl)
+* [OhMyRunPod](https://github.com/kodxana/OhMyRunPod)
+* [RunPod File Uploader](https://github.com/kodxana/RunPod-FilleUploader)
+* [croc](https://github.com/schollz/croc)
+* [rclone](https://rclone.org/)
 
 ## Building the Docker image
 
