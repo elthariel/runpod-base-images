@@ -100,14 +100,14 @@ target "cu121-torch221" {
 }
 
 target "cu121-torch230" {
-    dockerfile = "./dockerfiles/with-xformers-std/Dockerfile"
+    dockerfile = "./dockerfiles/with-xformers-cuxxx/Dockerfile"
     tags = ["${REGISTRY}/${REGISTRY_USER}/runpod-base:${RELEASE}-cuda12.1.1-torch2.3.0"]
     args = {
         BASE_IMAGE = "nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04"
         RELEASE = "${RELEASE}"
         INDEX_URL = "https://download.pytorch.org/whl/cu121"
         TORCH_VERSION = "2.3.0+cu121"
-        XFORMERS_VERSION = "0.0.26.post1+cu118"
+        XFORMERS_VERSION = "0.0.26.post1"
         RUNPODCTL_VERSION = "${RUNPODCTL_VERSION}"
     }
     platforms = ["linux/amd64"]
