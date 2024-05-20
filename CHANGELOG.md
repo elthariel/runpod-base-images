@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## 2024-05-20
+
+- Added `cu121-torch230` target for CUDA 12.1 + torch 2.3.0.
+
 ## 2024-05-08
 
 - Moved installation of apps into build/apps.sh.
