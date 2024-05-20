@@ -100,7 +100,7 @@ target "cu121-torch221" {
 }
 
 target "cu121-torch230" {
-    dockerfile = "./dockerfiles/with-xformers-cuxxx/Dockerfile"
+    dockerfile = "./dockerfiles/with-xformers-std/Dockerfile"
     tags = ["${REGISTRY}/${REGISTRY_USER}/runpod-base:${RELEASE}-cuda12.1.1-torch2.3.0"]
     args = {
         BASE_IMAGE = "nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04"
