@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## 2024-06-06
+
+- Added `cu121-torch231` target for CUDA 12.1 + torch 2.3.1.
+
 ## 2024-05-20
 
 - Added `cu121-torch230` target for CUDA 12.1 + torch 2.3.0.
