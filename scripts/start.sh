@@ -3,6 +3,28 @@
 #                          Function Definitions                                #
 # ---------------------------------------------------------------------------- #
 
+check_cuda_version() {
+    # Extract the CUDA version using nvidia-smi
+    CURRENT_CUDA_VERSION=$(nvidia-smi | grep "CUDA Version" | awk -F 'CUDA Version: ' '{print $2}' | awk '{print $1}')
+
+    # Check if the CUDA version was successfully extracted
+    if [[ -z "${CURRENT_CUDA_VERSION}" ]];
+    then
+        echo "CUDA version not found. Make sure that CUDA is properly installed."
+        exit 1
+    fi
+
+    # Compare the CUDA version with the required version
+    if [[ $(printf '%s\n' "${REQUIRED_CUDA_VERSION}" "${CURRENT_CUDA_VERSION}" | sort -V | head -n1) != "${REQUIRED_CUDA_VERSION}" ]];
+    then
+        echo "Current CUDA version (${CURRENT_CUDA_VERSION}) is older than required (${REQUIRED_CUDA_VERSION})."
+        echo "Please switch to a pod with CUDA version ${REQUIRED_CUDA_VERSION} or higher by selecting the appropriate filter on Pod deploy."
+        exit 1
+    else
+        echo "CUDA version is sufficient: ${CURRENT_CUDA_VERSION}"
+    fi
+}
+
 start_nginx() {
     echo "Starting Nginx service..."
     service nginx start

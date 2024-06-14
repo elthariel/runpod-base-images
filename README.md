@@ -2,13 +2,70 @@
 
 ## Target Images
 
-|              | cu118-torch200 | cu118-torch212 | cu118-torch222 | cu118-torch230 | cu121-torch221 | cu121-torch230 | cu121-torch231 |
-|--------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|
-| **Ubuntu**   | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      | 22.04 LTS      |
-| **CUDA**     | 11.8           | 11.8           | 11.8           | 11.8           | 12.1           | 12.1           | 12.1           |
-| **Python**   | 3.10.12        | 3.10.12        | 3.10.12        | 3.10.12        | 3.10.12        | 3.10.12        | 3.10.12        |
-| **Torch**    | 2.0.0          | 2.1.2          | 2.2.2          | 2.3.0          | 2.2.1          | 2.3.0          | 2.3.0          |
-| **xformers** | 0.0.19         | 0.0.23.post1   | 0.0.25.post1   | 0.0.26.post1   | None           | 0.0.26.post1   | 0.0.26.post1   |
+### cu118-torch200
+
+- Ubuntu 22.04 LTS
+- CUDA 11.8
+- Python 3.10.12
+- Torch 2.0.0
+- xformers 0.0.19
+
+### cu118-torch212
+
+- Ubuntu 22.04 LTS
+- CUDA 11.8
+- Python 3.10.12
+- Torch 2.1.2
+- xformers 0.0.23.post1
+
+### cu118-torch222
+
+- Ubuntu 22.04 LTS
+- CUDA 11.8
+- Python 3.10.12
+- Torch 2.2.2
+- xformers 0.0.25.post1
+
+### cu118-torch230
+
+- Ubuntu 22.04 LTS
+- CUDA 11.8
+- Python 3.10.12
+- Torch 2.3.0
+- xformers 0.0.26.post1
+
+### cu121-torch200
+
+- Ubuntu 22.04 LTS
+- CUDA 12.1
+- Python 3.10.12
+- Torch 2.0.0
+- xformers 0.0.19
+
+### cu121-torch221
+
+- Ubuntu 22.04 LTS
+- CUDA 12.1
+- Python 3.10.12
+- Torch 2.2.1
+- ~~xformers~~
+
+### cu121-torch230
+
+- Ubuntu 22.04 LTS
+- CUDA 12.1
+- Python 3.10.12
+- Torch 2.3.0
+- xformers 0.0.26.post1
+
+### cu121-torch231
+
+- Ubuntu 22.04 LTS
+- CUDA 12.1
+- Python 3.10.12
+- Torch 2.3.1
+- xformers 0.0.26.post1
+
 
 ## Pre-installed applications
 

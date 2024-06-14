@@ -1,4 +1,9 @@
-# CHANGE LOG
+# CHANGELOG
+
+## 2024-06-14
+
+- Added `cu121-torch200` target for CUDA 12.1 + torch 2.0.0.
+- Added CUDA version checker to the container start script.
 
 ## 2024-06-06
 
