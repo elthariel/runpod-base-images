@@ -20,7 +20,6 @@ group "default" {
         "cu118-torch212",
         "cu118-torch222",
         "cu118-torch230",
-        "cu121-torch200",
         "cu121-torch221",
         "cu121-torch230"
 #        "cu121-torch231"
@@ -85,22 +84,6 @@ target "cu118-torch230" {
         INDEX_URL = "https://download.pytorch.org/whl/cu118"
         TORCH_VERSION = "2.3.0+cu118"
         XFORMERS_VERSION = "0.0.26.post1+cu118"
-        RUNPODCTL_VERSION = "${RUNPODCTL_VERSION}"
-    }
-    platforms = ["linux/amd64"]
-    annotations = ["org.opencontainers.image.authors=${REGISTRY_USER}"]
-}
-
-target "cu121-torch200" {
-    dockerfile = "./dockerfiles/with-xformers-std/Dockerfile"
-    tags = ["${REGISTRY}/${REGISTRY_USER}/runpod-base:${RELEASE}-cuda12.1.1-torch2.0.0"]
-    args = {
-        BASE_IMAGE = "nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04"
-        REQUIRED_CUDA_VERSION = "12.1"
-        RELEASE = "${RELEASE}"
-        INDEX_URL = "https://download.pytorch.org/whl/cu121"
-        TORCH_VERSION = "2.0.0+cu121"
-        XFORMERS_VERSION = "0.0.19+cu121"
         RUNPODCTL_VERSION = "${RUNPODCTL_VERSION}"
     }
     platforms = ["linux/amd64"]
