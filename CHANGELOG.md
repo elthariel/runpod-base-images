@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2024-06-15
+
+- Added Pytorch test on container startup.
+
 ## 2024-06-14
 
 - Added CUDA version checker to the container start script.
