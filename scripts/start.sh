@@ -3,25 +3,85 @@
 #                          Function Definitions                                #
 # ---------------------------------------------------------------------------- #
 
+# Check CUDA version using nvidia-smi
 check_cuda_version() {
-    # Extract the CUDA version using nvidia-smi
-    CURRENT_CUDA_VERSION=$(nvidia-smi | grep "CUDA Version" | awk -F 'CUDA Version: ' '{print $2}' | awk '{print $1}')
+    echo "Checking CUDA version using nvidia-smi..."
+
+    CURRENT_CUDA_VERSION=$(nvidia-smi | grep -oP "CUDA Version: \K[0-9.]+")
 
     # Check if the CUDA version was successfully extracted
     if [[ -z "${CURRENT_CUDA_VERSION}" ]];
     then
-        echo "CUDA version not found. Make sure that CUDA is properly installed."
+        echo "CUDA version not found. Make sure that CUDA is properly installed and 'nvidia-smi' is available."
         exit 1
     fi
 
+    echo "Detected CUDA version using nvidia-smi: ${CURRENT_CUDA_VERSION}"
+
+    # Split the version into major and minor for comparison
+    IFS='.' read -r -a CURRENT_CUDA_VERSION_ARRAY <<< "${CURRENT_CUDA_VERSION}"
+    CURRENT_CUDA_VERSION_MAJOR="${CURRENT_CUDA_VERSION_ARRAY[0]}"
+    CURRENT_CUDA_VERSION_MINOR="${CURRENT_CUDA_VERSION_ARRAY[1]}"
+
+    IFS='.' read -r -a REQUIRED_CUDA_VERSION_ARRAY <<< "${REQUIRED_CUDA_VERSION}"
+    REQUIRED_CUDA_VERSION_MAJOR="${REQUIRED_CUDA_VERSION_ARRAY[0]}"
+    REQUIRED_CUDA_VERSION_MINOR="${REQUIRED_CUDA_VERSION_ARRAY[1]}"
+
     # Compare the CUDA version with the required version
-    if [[ $(printf '%s\n' "${REQUIRED_CUDA_VERSION}" "${CURRENT_CUDA_VERSION}" | sort -V | head -n1) != "${REQUIRED_CUDA_VERSION}" ]];
+    if [[ "${CURRENT_CUDA_VERSION_MAJOR}" -lt "${REQUIRED_CUDA_VERSION_MAJOR}" ||
+          ( "${CURRENT_CUDA_VERSION_MAJOR}" -eq "${REQUIRED_CUDA_VERSION_MAJOR}" && "${CURRENT_CUDA_VERSION_MINOR}" -lt "${REQUIRED_CUDA_VERSION_MINOR}" ) ]];
     then
         echo "Current CUDA version (${CURRENT_CUDA_VERSION}) is older than required (${REQUIRED_CUDA_VERSION})."
         echo "Please switch to a pod with CUDA version ${REQUIRED_CUDA_VERSION} or higher by selecting the appropriate filter on Pod deploy."
         exit 1
     else
-        echo "CUDA version is sufficient: ${CURRENT_CUDA_VERSION}"
+        echo "CUDA version from nvidia-smi seems sufficient: ${CURRENT_CUDA_VERSION}"
+    fi
+}
+
+# Simple CUDA functionality test using PyTorch
+test_pytorch_cuda() {
+    echo "Performing a simple CUDA functionality test using PyTorch..."
+
+    python3 - <<END
+import sys
+import torch
+
+try:
+    # Check if CUDA is available
+    if not torch.cuda.is_available():
+        print("CUDA is not available on this system.")
+        sys.exit(1)
+
+    # Get the CUDA version
+    cuda_version = torch.version.cuda
+    if cuda_version is None:
+        print("Could not determine CUDA version using PyTorch.")
+        sys.exit(1)
+
+    print(f"From PyTorch test, your CUDA version meets the requirement: {cuda_version}")
+
+    # Test CUDA by getting device count
+    num_gpus = torch.cuda.device_count()
+    print(f"Number of CUDA-capable devices: {num_gpus}")
+
+    # List CUDA-capable devices
+    for i in range(num_gpus):
+        print(f"Device {i}: {torch.cuda.get_device_name(i)}")
+
+except RuntimeError as e:
+    print(f"Runtime error: {e}")
+    sys.exit(2)
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
+    sys.exit(1)
+END
+
+    if [[ $? -ne 0 ]]; then
+        echo "PyTorch CUDA test failed. Please switch to a pod with a proper CUDA setup."
+        exit 1
+    else
+        echo "CUDA version is sufficient and functional."
     fi
 }
 
@@ -190,11 +250,12 @@ start_cron() {
 # ---------------------------------------------------------------------------- #
 
 echo "Container Started, configuration in progress..."
-check_cuda_version
 start_nginx
 setup_ssh
 start_cron
 start_jupyter
+check_cuda_version
+test_pytorch_cuda
 start_runpod_uploader
 execute_script "/pre_start.sh" "Running pre-start script..."
 configure_filezilla
