@@ -190,6 +190,7 @@ start_cron() {
 # ---------------------------------------------------------------------------- #
 
 echo "Container Started, configuration in progress..."
+check_cuda_version
 start_nginx
 setup_ssh
 start_cron
